@@ -16,4 +16,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/beranda', [BerandaController::class, 'index']);
+    Route::get('/user', [BerandaController::class, 'user'])->name('user');
+    Route::get('/role-user', [BerandaController::class, 'roleUser'])->name('role-user');
 });

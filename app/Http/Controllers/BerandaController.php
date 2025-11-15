@@ -13,6 +13,14 @@ class BerandaController extends Controller
     {
         return view('HalamanDepan.beranda');
     }
+    public function user()
+    {
+        return view('HalamanDepan.user');
+    }
+    public function roleUser()
+    {
+        return view('HalamanDepan.role-user');
+    }
 
     /**
      * Show the form for creating a new resource.

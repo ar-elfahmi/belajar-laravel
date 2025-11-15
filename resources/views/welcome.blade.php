@@ -10,6 +10,7 @@
 <body>
     <div class="card">
         <h1> Hello Teman-Teman ini halaman Welcome</h1>
+        <a href="{{route('login')}}">login</a>
     </div>
 </body>
 
