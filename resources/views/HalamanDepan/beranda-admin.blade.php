@@ -27,12 +27,12 @@
           <!--begin::Row-->
           <div class="row">
             <div class="col-sm-6">
-              <h3 class="mb-0">Fixed Complete</h3>
+              <h3 class="mb-0">Beranda Admin</h3>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-end">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Fixed Complete</li>
+                <li class="breadcrumb-item active" aria-current="page">Halaman Depan (beranda)</li>
               </ol>
             </div>
           </div>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="card-body">Start creating your amazing application!</div>
                 <!-- /.card-body -->
-                <div class="card-footer">Footer</div>
+                <div class="card-footer">Rumah Sakit Hewan Pendidikan</div>
                 <!-- /.card-footer-->
               </div>
               <!-- /.card -->

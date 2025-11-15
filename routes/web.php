@@ -15,7 +15,8 @@ Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogi
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/beranda', [BerandaController::class, 'index']);
+    Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda');
     Route::get('/user', [BerandaController::class, 'user'])->name('user');
     Route::get('/role-user', [BerandaController::class, 'roleUser'])->name('role-user');
+    Route::get('/temu-dokter', [BerandaController::class, 'temuDokter'])->name('temu-dokter');
 });

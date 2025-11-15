@@ -11,15 +11,19 @@ class BerandaController extends Controller
      */
     public function index()
     {
-        return view('HalamanDepan.beranda');
+        return view('HalamanDepan.beranda-admin');
     }
     public function user()
     {
-        return view('HalamanDepan.user');
+        return view('Halaman.admin.user');
     }
     public function roleUser()
     {
-        return view('HalamanDepan.role-user');
+        return view('Halaman.admin.role-user');
+    }
+    public function temuDokter()
+    {
+        return view('Halaman.resepsionis.temu-dokter');
     }
 
     /**
