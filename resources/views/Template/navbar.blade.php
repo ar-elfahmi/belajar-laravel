@@ -148,7 +148,7 @@
                 src="{{asset('AdminLTE/assets/img/profile.png')}}"
                 class="user-image rounded-circle shadow"
                 alt="User Image" />
-              <span class="d-none d-md-inline">Alexander Pierce</span>
+              <span class="d-none d-md-inline">{{auth()->user()->nama}}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
               <!--begin::User Image-->

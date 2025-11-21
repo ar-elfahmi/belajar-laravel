@@ -12,6 +12,7 @@ class BerandaController extends Controller
     public function index()
     {
         return view('HalamanDepan.beranda-admin');
+        // buat logika if untuk beranda yang berbeda tiap role
     }
     public function user()
     {

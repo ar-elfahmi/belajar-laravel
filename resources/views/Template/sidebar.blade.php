@@ -10,7 +10,7 @@
                     class="brand-image opacity-75 shadow" />
                 <!--end::Brand Image-->
                 <!--begin::Brand Text-->
-                <span class="brand-text fw-light">AdminLTE 4</span>
+                <span class="brand-text fw-light">RSHP</span>
                 <!--end::Brand Text-->
             </a>
             <!--end::Brand Link-->
@@ -39,6 +39,7 @@
                             <p>Temu Dokter</p>
                         </a>
                     </li>
+                    @if(auth()->user()->nama=="Admin")
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon bi bi-box-seam-fill"></i>
@@ -63,6 +64,7 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
                     <!-- <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon bi bi-clipboard-fill"></i>
