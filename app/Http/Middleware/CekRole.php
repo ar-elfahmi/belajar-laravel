@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CekRole
 {
-    public function handle(Request $request, Closure $next, ...$namas): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if ($request->user() && in_array($request->user()->nama, $namas)) {
+        if ($request->user() && in_array($request->user()->role_user()->where('status', '1')->first()->role->nama_role, $roles)) {
             return $next($request);
         }
 

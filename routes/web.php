@@ -19,14 +19,14 @@ Route::get('/login', function () {
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin'); // logika untuk cek login apakah benar
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout'); //logika untuk logout
 
-Route::group(['middleware' => ['auth', 'cekrole:Admin']], function () {
+Route::group(['middleware' => ['auth', 'cekrole:Administrator']], function () {
     //Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda'); // halaman dashboard tiap role beda admin, resepsionis, dokter, perawat, pemilik
     Route::get('/user', [BerandaController::class, 'user'])->name('user'); // halaman data master user
     Route::get('/role-user', [BerandaController::class, 'roleUser'])->name('role-user'); // halaman data master role user khusus admin
     //Route::get('/temu-dokter', [BerandaController::class, 'temuDokter'])->name('temu-dokter'); // halaman temu dokter khusus resepsionis
 });
 
-Route::group(['middleware' => ['auth', 'cekrole:Admin,Resepsionis']], function () {
+Route::group(['middleware' => ['auth', 'cekrole:Administrator,Resepsionis']], function () {
     Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda'); // halaman dashboard tiap role beda admin, resepsionis, dokter, perawat, pemilik
     Route::get('/temu-dokter', [BerandaController::class, 'temuDokter'])->name('temu-dokter'); // halaman temu dokter khusus resepsionis
 });
