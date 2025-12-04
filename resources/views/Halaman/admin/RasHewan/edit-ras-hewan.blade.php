@@ -27,12 +27,12 @@
                     <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Beranda Resepsionis</h3>
+                            <h3 class="mb-0">Data Master Ras Hewan</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Halaman Depan (beranda)</li>
+                                <li class="breadcrumb-item active" aria-current="page">Ras Hewan</li>
                             </ol>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <!-- Default box -->
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Halaman Depan Resepsionis</h3>
+                                    <h3 class="card-title">Edit Data Ras Hewan</h3>
                                     <div class="card-tools">
                                         <button
                                             type="button"
@@ -69,9 +69,44 @@
                                             <i class="bi bi-x-lg"></i>
                                         </button>
                                     </div>
+                                    <!-- konten utama -->
                                 </div>
-                                <div class="card-body">Start creating your amazing application!</div>
-                                <!-- /.card-body -->
+                                <div class="card-body">
+                                    <div class="container">
+                                        <!-- START FORM -->
+                                        <div class="my-3 p-3 bg-body rounded shadow-sm">
+                                            <form action="{{ route('ras-hewan.update', $data_ras_hewan->idras_hewan) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+
+                                                <div class="mb-3">
+                                                    <label>Nama Ras</label>
+                                                    <input type="text" name="nama_ras" class="form-control" value="{{ old('nama_ras', $data_ras_hewan->nama_ras) }}" required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>Jenis Hewan</label>
+                                                    <select class="form-select" name="idjenis_hewan" required>
+                                                        <option value="">Pilih Jenis Hewan</option>
+                                                        @foreach($data_jenis_hewan as $jenis_hewan)
+                                                        <option value="{{ $jenis_hewan->idjenis_hewan }}" {{ old('idjenis_hewan', $data_ras_hewan->idjenis_hewan) == $jenis_hewan->idjenis_hewan ? 'selected' : '' }}>
+                                                            {{ $jenis_hewan->nama_jenis_hewan }}
+                                                        </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <a href="{{route('ras-hewan')}}" class="btn btn-secondary">Kembali</a>
+                                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                            </form>
+                                        </div>
+                                        <!-- AKHIR FORM -->
+                                    </div>
+                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+                                        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+                                    </script>
+                                </div>
+                                <!-- /.card-body (akhir konten utama) -->
                                 <div class="card-footer">Rumah Sakit Hewan Pendidikan</div>
                                 <!-- /.card-footer-->
                             </div>

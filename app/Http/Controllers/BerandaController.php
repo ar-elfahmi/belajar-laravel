@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class BerandaController extends Controller
@@ -11,21 +12,36 @@ class BerandaController extends Controller
      */
     public function index()
     {
-        return view('HalamanDepan.beranda-admin');
-        // buat logika if untuk beranda yang berbeda tiap role
+        $Role = Auth::user()->role_user->first()->role->nama_role;
+        switch ($Role) {
+            case 'Administrator':
+                return view('HalamanDepan.beranda-admin');
+                break;
+
+            case 'Resepsionis':
+                return view('HalamanDepan.beranda-resepsionis');
+                break;
+
+            case 'Dokter':
+                return view('HalamanDepan.beranda-dokter');
+                break;
+
+            case 'Perawat':
+                return view('HalamanDepan.beranda-perawat');
+                break;
+
+            case 'Pemilik':
+                return view('HalamanDepan.beranda-pemilik');
+                break;
+
+            default:
+                // Jika role tidak dikenali, kembalikan ke halaman login atau home default
+                return redirect('/')->with('error', 'Anda tidak memiliki akses.');
+                break;
+        }
     }
-    public function user()
-    {
-        return view('Halaman.admin.user');
-    }
-    public function roleUser()
-    {
-        return view('Halaman.admin.role-user');
-    }
-    public function temuDokter()
-    {
-        return view('Halaman.resepsionis.temu-dokter');
-    }
+
+
 
     /**
      * Show the form for creating a new resource.

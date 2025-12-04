@@ -27,12 +27,12 @@
                     <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Data Role User</h3>
+                            <h3 class="mb-0">Data Master Kategori</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Role User</li>
+                                <li class="breadcrumb-item active" aria-current="page">Kategori</li>
                             </ol>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <!-- Default box -->
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Data Master Role User</h3>
+                                    <h3 class="card-title">Edit Data Kategori</h3>
                                     <div class="card-tools">
                                         <button
                                             type="button"
@@ -69,9 +69,30 @@
                                             <i class="bi bi-x-lg"></i>
                                         </button>
                                     </div>
+                                    <!-- konten utama -->
                                 </div>
-                                <div class="card-body">Belum ada data Role User</div>
-                                <!-- /.card-body -->
+                                <div class="card-body">
+                                    <div class="container">
+                                        <!-- START FORM -->
+                                        <div class="my-3 p-3 bg-body rounded shadow-sm">
+                                            <form action="{{ route('kategori.update', $data_kategori->idkategori) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="mb-3">
+                                                    <label>Nama Kategori</label>
+                                                    <input type="text" name="nama_kategori" class="form-control" value="{{ old('nama_kategori', $data_kategori->nama_kategori) }}">
+                                                </div>
+                                                <a href="{{route('kategori')}}" class="btn btn-secondary">Kembali</a>
+                                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                            </form>
+                                        </div>
+                                        <!-- AKHIR FORM -->
+                                    </div>
+                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+                                        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+                                    </script>
+                                </div>
+                                <!-- /.card-body (akhir konten utama) -->
                                 <div class="card-footer">Rumah Sakit Hewan Pendidikan</div>
                                 <!-- /.card-footer-->
                             </div>

@@ -17,6 +17,18 @@ class LoginController extends Controller
     }
     public function logout(Request $request)
     {
-        return redirect('/');
+        // 1. Proses Logout dari Guard (Hapus autentikasi user saat ini)
+        Auth::logout();
+
+        // 2. Invalidasi Session (Hapus semua data session server untuk user ini)
+        // Ini mencegah penyerang menggunakan session ID lama (Session Fixation Attack)
+        $request->session()->invalidate();
+
+        // 3. Regenerasi Token CSRF
+        // Mencegah serangan CSRF pada form login berikutnya
+        $request->session()->regenerateToken();
+
+        // 4. Redirect ke halaman login atau beranda dengan pesan sukses
+        return redirect('/')->with('success', 'Anda berhasil logout.');
     }
 }
