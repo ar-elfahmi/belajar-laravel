@@ -49,19 +49,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('user')}}" class="nav-link">
+                                <a href="{{route('admin.user')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Data User</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('role-user')}}" class="nav-link">
+                                <a href="{{route('admin.role-user')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Role User</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('role')}}" class="nav-link">
+                                <a href="{{route('admin.role')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Role</p>
                                 </a>
@@ -79,31 +79,31 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('jenis-hewan')}}" class="nav-link">
+                                <a href="{{route('admin.jenis-hewan')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Jenis Hewan</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('ras-hewan')}}" class="nav-link">
+                                <a href="{{route('admin.ras-hewan')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Ras Hewan</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('kategori')}}" class="nav-link">
+                                <a href="{{route('admin.kategori')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Kategori</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('kategori-klinis')}}" class="nav-link">
+                                <a href="{{route('admin.kategori-klinis')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Kategori Klinis</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('kode-tindakan-terapi')}}" class="nav-link">
+                                <a href="{{route('admin.kode-tindakan-terapi')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Kode Tindakan Terapi</p>
                                 </a>
@@ -121,13 +121,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('pemilik')}}" class="nav-link">
+                                <a href="{{route('admin.pemilik')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Data Pemilik</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('pet')}}" class="nav-link">
+                                <a href="{{route('admin.pet')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Data Pet</p>
                                 </a>
@@ -145,19 +145,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('temu-dokter')}}" class="nav-link">
+                                <a href="{{route('admin.temu-dokter')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Temu Dokter</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('rekam-medis')}}" class="nav-link">
+                                <a href="{{route('admin.rekam-medis')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Rekam Medis</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('detail-rekam-medis')}}" class="nav-link">
+                                <a href="{{route('admin.detail-rekam-medis')}}" class="nav-link">
                                     <i class="nav-icon bi bi-circle"></i>
                                     <p>Detail Rekam Medis</p>
                                 </a>

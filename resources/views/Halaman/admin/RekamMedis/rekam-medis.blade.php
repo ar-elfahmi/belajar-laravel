@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-rekam-medis') }}" class="btn btn-primary">Tambah Rekam Medis</a>
+                                            <a href="{{ route('admin.tambah-rekam-medis') }}" class="btn btn-primary">Tambah Rekam Medis</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -124,8 +124,8 @@
                                                     <td>{{ Str::limit($value->temuan_klinis, 50) }}</td>
                                                     <td>{{ Str::limit($value->diagnosa, 50) }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-rekam-medis', $value->idrekam_medis) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('rekam-medis.hapus', $value->idrekam_medis) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-rekam-medis', $value->idrekam_medis) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.rekam-medis.hapus', $value->idrekam_medis) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

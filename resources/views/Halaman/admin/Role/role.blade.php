@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-role') }}" class="btn btn-primary">Tambah Role</a>
+                                            <a href="{{ route('admin.tambah-role') }}" class="btn btn-primary">Tambah Role</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -116,8 +116,8 @@
                                                     <td>{{ $data_role->firstItem() + $role }}</td>
                                                     <td>{{ $value->nama_role }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-role', $value->idrole) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('role.hapus', $value->idrole) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-role', $value->idrole) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.role.hapus', $value->idrole) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

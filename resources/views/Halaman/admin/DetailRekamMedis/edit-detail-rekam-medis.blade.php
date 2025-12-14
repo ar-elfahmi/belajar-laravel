@@ -75,7 +75,7 @@
                                     <div class="container">
                                         <!-- START FORM -->
                                         <div class="my-3 p-3 bg-body rounded shadow-sm">
-                                            <form action="{{ route('detail-rekam-medis.update', $data_detail_rekam_medis->iddetail_rekam_medis) }}" method="POST">
+                                            <form action="{{ route('admin.detail-rekam-medis.update', $data_detail_rekam_medis->iddetail_rekam_medis) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
 

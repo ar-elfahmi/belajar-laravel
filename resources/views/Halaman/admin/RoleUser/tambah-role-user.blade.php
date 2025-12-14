@@ -32,7 +32,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('role-user') }}">Role User</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.role-user') }}">Role User</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Tambah Role User</li>
                             </ol>
                         </div>
@@ -74,7 +74,7 @@
                                 <div class="card-body">
                                     @include('Template.message')
 
-                                    <form action="{{ route('role-user.store') }}" method="POST">
+                                    <form action="{{ route('admin.role-user.store') }}" method="POST">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-6">
@@ -82,7 +82,7 @@
                                                     <label for="iduser" class="form-label">User</label>
                                                     <select class="form-select" id="iduser" name="iduser" required>
                                                         <option value="">-- Pilih User --</option>
-                                                        @foreach($data_user as $user)
+                                                        @foreach($data_user->sortBy('nama') as $user)
                                                         <option value="{{ $user->iduser }}">{{ $user->nama }}</option>
                                                         @endforeach
                                                     </select>
@@ -121,7 +121,7 @@
                                             </div>
                                         </div>
                                         <div class="text-end">
-                                            <a href="{{ route('role-user') }}" class="btn btn-secondary">Batal</a>
+                                            <a href="{{ route('admin.role-user') }}" class="btn btn-secondary">Batal</a>
                                             <button type="submit" class="btn btn-primary">Simpan</button>
                                         </div>
                                     </form>

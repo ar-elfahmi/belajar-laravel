@@ -75,7 +75,7 @@
                                     <div class="container">
                                         <!-- START FORM -->
                                         <div class="my-3 p-3 bg-body rounded shadow-sm">
-                                            <form action="{{ route('pet.update', $data_pet->idpet) }}" method="POST">
+                                            <form action="{{ route('admin.pet.update', $data_pet->idpet) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="mb-3">

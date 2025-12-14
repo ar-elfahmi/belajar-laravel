@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-temu-dokter') }}" class="btn btn-primary">Tambah Temu Dokter</a>
+                                            <a href="{{ route('admin.tambah-temu-dokter') }}" class="btn btn-primary">Tambah Temu Dokter</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -132,8 +132,8 @@
                                                     <td>{{ $value->pet->nama }}</td>
                                                     <td>{{ $value->roleUser->user->nama }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-temu-dokter', $value->idreservasi_dokter) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('temu-dokter.hapus', $value->idreservasi_dokter) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-temu-dokter', $value->idreservasi_dokter) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.temu-dokter.hapus', $value->idreservasi_dokter) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

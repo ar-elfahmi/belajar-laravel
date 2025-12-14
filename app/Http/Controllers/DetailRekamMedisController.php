@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\DetailRekamMedis;
 use App\Models\RekamMedis;
 use App\Models\KodeTindakanTerapi;
@@ -13,7 +13,33 @@ class DetailRekamMedisController extends Controller
     public function detail_rekam_medis()
     {
         $data_detail_rekam_medis = DetailRekamMedis::with('rekamMedis.temuDokter.pet', 'kodeTindakanTerapi')->paginate(4);
+        $Role = Auth::user()->role_user->first()->role->nama_role;
+        switch ($Role) {
+            case 'Administrator':
         return view('Halaman.admin.DetailRekamMedis.detail-rekam-medis', compact('data_detail_rekam_medis'));
+                break;
+
+            case 'Resepsionis':
+        return view('Halaman.resepsionis.DetailRekamMedis.detail-rekam-medis', compact('data_detail_rekam_medis'));
+                break;
+
+            case 'Dokter':
+        return view('Halaman.dokter.DetailRekamMedis.detail-rekam-medis', compact('data_detail_rekam_medis'));
+                break;
+
+            case 'Perawat':
+        return view('Halaman.perawat.DetailRekamMedis.detail-rekam-medis', compact('data_detail_rekam_medis'));
+                break;
+
+            case 'Pemilik':
+        return view('Halaman.pemilik.DetailRekamMedis.detail-rekam-medis', compact('data_detail_rekam_medis'));
+                break;
+
+            default:
+                // Jika role tidak dikenali, kembalikan ke halaman login atau home default
+                return redirect('/')->with('error', 'Anda tidak memiliki akses.');
+                break;
+        }
     }
 
     //halaman tambah detail rekam medis

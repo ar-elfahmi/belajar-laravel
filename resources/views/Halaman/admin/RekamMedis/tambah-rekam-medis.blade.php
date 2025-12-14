@@ -75,7 +75,7 @@
                                     <div class="container">
                                         <!-- START FORM -->
                                         <div class="my-3 p-3 bg-body rounded shadow-sm">
-                                            <form action="{{ route('rekam-medis.store') }}" method="POST">
+                                            <form action="{{ route('admin.rekam-medis.store') }}" method="POST">
 
                                                 @csrf
 

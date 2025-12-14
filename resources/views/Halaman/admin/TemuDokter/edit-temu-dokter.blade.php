@@ -75,7 +75,7 @@
                                     <div class="container">
                                         <!-- START FORM -->
                                         <div class="my-3 p-3 bg-body rounded shadow-sm">
-                                            <form action="{{ route('temu-dokter.update', $data_temu_dokter->idreservasi_dokter) }}" method="POST">
+                                            <form action="{{ route('admin.temu-dokter.update', $data_temu_dokter->idreservasi_dokter) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="mb-3">

@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-kategori') }}" class="btn btn-primary">Tambah Kategori</a>
+                                            <a href="{{ route('admin.tambah-kategori') }}" class="btn btn-primary">Tambah Kategori</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -116,8 +116,8 @@
                                                     <td>{{ $data_kategori->firstItem() + $kategori }}</td>
                                                     <td>{{ $value->nama_kategori }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-kategori', $value->idkategori) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('kategori.hapus', $value->idkategori) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-kategori', $value->idkategori) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.kategori.hapus', $value->idkategori) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

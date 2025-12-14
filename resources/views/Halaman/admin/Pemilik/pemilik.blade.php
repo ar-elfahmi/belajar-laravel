@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-pemilik') }}" class="btn btn-primary">Tambah Pemilik</a>
+                                            <a href="{{ route('admin.tambah-pemilik') }}" class="btn btn-primary">Tambah Pemilik</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -120,8 +120,8 @@
                                                     <td>{{ $value->alamat }}</td>
                                                     <td>{{ $value->user->nama }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-pemilik', $value->idpemilik) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('pemilik.hapus', $value->idpemilik) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-pemilik', $value->idpemilik) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.pemilik.hapus', $value->idpemilik) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

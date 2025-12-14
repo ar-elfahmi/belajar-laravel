@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-ras-hewan') }}" class="btn btn-primary">Tambah Ras Hewan</a>
+                                            <a href="{{ route('admin.tambah-ras-hewan') }}" class="btn btn-primary">Tambah Ras Hewan</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -118,8 +118,8 @@
                                                     <td>{{ $value->nama_ras }}</td>
                                                     <td>{{ $value->jenisHewan->nama_jenis_hewan ?? '-' }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-ras-hewan', $value->idras_hewan) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('ras-hewan.hapus', $value->idras_hewan) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-ras-hewan', $value->idras_hewan) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.ras-hewan.hapus', $value->idras_hewan) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

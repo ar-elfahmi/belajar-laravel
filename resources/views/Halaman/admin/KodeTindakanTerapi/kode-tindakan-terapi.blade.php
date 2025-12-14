@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-kode-tindakan-terapi') }}" class="btn btn-primary">Tambah Kode Tindakan Terapi</a>
+                                            <a href="{{ route('admin.tambah-kode-tindakan-terapi') }}" class="btn btn-primary">Tambah Kode Tindakan Terapi</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -122,8 +122,8 @@
                                                     <td>{{ $value->kategori->nama_kategori ?? '-' }}</td>
                                                     <td>{{ $value->kategoriKlinis->nama_kategori_klinis ?? '-' }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-kode-tindakan-terapi', $value->idkode_tindakan_terapi) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('kode-tindakan-terapi.hapus', $value->idkode_tindakan_terapi) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-kode-tindakan-terapi', $value->idkode_tindakan_terapi) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.kode-tindakan-terapi.hapus', $value->idkode_tindakan_terapi) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

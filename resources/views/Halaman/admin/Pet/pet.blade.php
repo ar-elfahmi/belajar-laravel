@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-pet') }}" class="btn btn-primary">Tambah Pet</a>
+                                            <a href="{{ route('admin.tambah-pet') }}" class="btn btn-primary">Tambah Pet</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -107,7 +107,7 @@
                                                 <tr>
                                                     <th class="col-md-1">No</th>
                                                     <th class="col-md-2">Nama</th>
-                                                    <th class="col-md-2">Tanggal Lahir</th>
+                                                    <th class="col-md-1">Warna Tanda</th>
                                                     <th class="col-md-1">Jenis Kelamin</th>
                                                     <th class="col-md-2">Pemilik</th>
                                                     <th class="col-md-2">Ras Hewan</th>
@@ -119,18 +119,18 @@
                                                 <tr>
                                                     <td>{{ $data_pet->firstItem() + $pet }}</td>
                                                     <td>{{ $value->nama }}</td>
-                                                    <td>{{ $value->tanggal_lahir }}</td>
+                                                    <td>{{ $value->warna_tanda }}</td>
                                                     <td>{{ $value->jenis_kelamin == 'J' ? 'Jantan' : 'Betina' }}</td>
-                                                    <td>{{ $value->pemilik->nama }}</td>
-                                                    <td>{{ $value->rasHewan->nama_ras }}</td>
+                                                    <td>{{ $value->pemilik && $value->pemilik->user ? $value->pemilik->user->nama : 'Tidak ada pemilik' }}</td>
+                                                    <td>{{ $value->rasHewan ? $value->rasHewan->nama_ras : 'Tidak ada ras' }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-pet', $value->idpet) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('pet.hapus', $value->idpet) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-pet', $value->idpet) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.pet.hapus', $value->idpet) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty
                                                 <tr>
-                                                    <td colspan="7" class="text-center">Tidak ada data</td>
+                                                    <td colspan="8" class="text-center">Tidak ada data</td>
                                                 </tr>
                                                 @endforelse
                                             </tbody>

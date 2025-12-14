@@ -32,7 +32,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('role-user') }}">Role User</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.role-user') }}">Role User</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Edit Role User</li>
                             </ol>
                         </div>
@@ -74,7 +74,7 @@
                                 <div class="card-body">
                                     @include('Template.message')
 
-                                    <form action="{{ route('role-user.update', $data_role_user->idrole_user) }}" method="POST">
+                                    <form action="{{ route('admin.role-user.update', $data_role_user->idrole_user) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <div class="row">
@@ -126,7 +126,7 @@
                                             </div>
                                         </div>
                                         <div class="text-end">
-                                            <a href="{{ route('role-user') }}" class="btn btn-secondary">Batal</a>
+                                            <a href="{{ route('admin.role-user') }}" class="btn btn-secondary">Batal</a>
                                             <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </form>

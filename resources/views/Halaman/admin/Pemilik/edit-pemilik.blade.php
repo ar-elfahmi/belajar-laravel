@@ -75,7 +75,7 @@
                                     <div class="container">
                                         <!-- START FORM -->
                                         <div class="my-3 p-3 bg-body rounded shadow-sm">
-                                            <form action="{{ route('pemilik.update', $data_pemilik->idpemilik) }}" method="POST">
+                                            <form action="{{ route('admin.pemilik.update', $data_pemilik->idpemilik) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="mb-3">

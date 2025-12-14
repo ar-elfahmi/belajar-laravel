@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-jenis-hewan') }}" class="btn btn-primary">Tambah Jenis Hewan</a>
+                                            <a href="{{ route('admin.tambah-jenis-hewan') }}" class="btn btn-primary">Tambah Jenis Hewan</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -116,8 +116,8 @@
                                                     <td>{{ $data_jenis_hewan->firstItem() + $jenis_hewan }}</td>
                                                     <td>{{ $value->nama_jenis_hewan }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-jenis-hewan', $value->idjenis_hewan) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('jenis-hewan.hapus', $value->idjenis_hewan) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-jenis-hewan', $value->idjenis_hewan) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.jenis-hewan.hapus', $value->idjenis_hewan) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

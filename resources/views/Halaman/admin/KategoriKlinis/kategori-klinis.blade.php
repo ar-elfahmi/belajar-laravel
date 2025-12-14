@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-kategori-klinis') }}" class="btn btn-primary">Tambah Kategori Klinis</a>
+                                            <a href="{{ route('admin.tambah-kategori-klinis') }}" class="btn btn-primary">Tambah Kategori Klinis</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -116,8 +116,8 @@
                                                     <td>{{ $data_kategori_klinis->firstItem() + $kategori_klinis }}</td>
                                                     <td>{{ $value->nama_kategori_klinis }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-kategori-klinis', $value->idkategori_klinis) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('kategori-klinis.hapus', $value->idkategori_klinis) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-kategori-klinis', $value->idkategori_klinis) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.kategori-klinis.hapus', $value->idkategori_klinis) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

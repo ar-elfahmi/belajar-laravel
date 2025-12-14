@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('tambah-user') }}" class="btn btn-primary">Tambah User</a>
+                                            <a href="{{ route('admin.tambah-user') }}" class="btn btn-primary">Tambah User</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -118,8 +118,8 @@
                                                     <td>{{ $value->nama }}</td>
                                                     <td>{{ $value->email }}</td>
                                                     <td>
-                                                        <a href="{{ route('edit-user', $value->iduser) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('user.hapus', $value->iduser) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('admin.edit-user', $value->iduser) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('admin.user.hapus', $value->iduser) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

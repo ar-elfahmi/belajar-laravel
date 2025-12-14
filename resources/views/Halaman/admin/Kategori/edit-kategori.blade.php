@@ -75,7 +75,7 @@
                                     <div class="container">
                                         <!-- START FORM -->
                                         <div class="my-3 p-3 bg-body rounded shadow-sm">
-                                            <form action="{{ route('kategori.update', $data_kategori->idkategori) }}" method="POST">
+                                            <form action="{{ route('admin.kategori.update', $data_kategori->idkategori) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="mb-3">

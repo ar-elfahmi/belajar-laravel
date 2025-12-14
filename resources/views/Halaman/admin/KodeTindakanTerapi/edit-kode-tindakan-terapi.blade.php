@@ -75,7 +75,7 @@
                                     <div class="container">
                                         <!-- START FORM -->
                                         <div class="my-3 p-3 bg-body rounded shadow-sm">
-                                            <form action="{{ route('kode-tindakan-terapi.update', $data_kode_tindakan_terapi->idkode_tindakan_terapi) }}" method="POST">
+                                            <form action="{{ route('admin.kode-tindakan-terapi.update', $data_kode_tindakan_terapi->idkode_tindakan_terapi) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
 

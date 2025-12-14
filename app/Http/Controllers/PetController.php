@@ -12,7 +12,7 @@ class PetController extends Controller
     // halaman pet
     public function pet()
     {
-        $data_pet = Pet::with('pemilik', 'rasHewan')->paginate(4);
+        $data_pet = Pet::with('pemilik.user', 'rasHewan')->paginate(4);
         return view('Halaman.admin.Pet.pet', compact('data_pet'));
     }
 

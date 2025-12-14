@@ -75,7 +75,7 @@
                                     <div class="container">
                                         <!-- START FORM -->
                                         <div class="my-3 p-3 bg-body rounded shadow-sm">
-                                            <form action="{{ route('user.update', $data_user->iduser) }}" method="POST">
+                                            <form action="{{ route('admin.user.update', $data_user->iduser) }}" method="POST">
                                                 @csrf
                                                 @method('PUT') <div class="mb-3">
                                                     <label>Nama</label>
