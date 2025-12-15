@@ -42,6 +42,35 @@ class BerandaController extends Controller
     }
 
 
+    public function profile()
+    {
+        $Role = Auth::user()->role_user->first()->role->nama_role;
+        switch ($Role) {
+            case 'Administrator':
+                return view('HalamanDepan.profile-admin');
+                break;
+
+            case 'Resepsionis':
+                return view('HalamanDepan.profile-resepsionis');
+                break;
+
+            case 'Dokter':
+                return view('HalamanDepan.profile-dokter');
+                break;
+
+            case 'Perawat':
+                return view('HalamanDepan.profile-perawat');
+                break;
+
+            case 'Pemilik':
+                return view('HalamanDepan.profile-pemilik');
+                break;
+
+            default:
+                // Jika role tidak dikenali, kembalikan ke halaman login atau home default
+                return redirect('/')->with('error', 'Anda tidak memiliki akses.');
+                break;
+        }
 
     /**
      * Show the form for creating a new resource.

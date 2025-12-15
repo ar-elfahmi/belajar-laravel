@@ -38,6 +38,11 @@ Route::group(['middleware' => ['auth', 'cekrole:Resepsionis,Administrator,Pemili
     Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda'); // halaman dashboard tiap role beda
 });
 
+// middleware bersama untuk role resepsionis, administrator, pemilik, dokter, perawat (halaman depan)
+Route::group(['middleware' => ['auth', 'cekrole:Resepsionis,Administrator,Pemilik,Dokter,Perawat']], function () {
+    Route::get('/profile', [BerandaController::class, 'profile'])->name('profile'); // halaman dashboard tiap role beda
+});
+
 
 // middleware khusus untuk role administrator - CRUD semua master dan transaksional
 Route::prefix('admin')
@@ -173,7 +178,7 @@ Route::prefix('perawat')
     ->group(function () {
         Route::get('/pet', [PetController::class, 'pet'])->name('pet'); // halaman data master pet
         Route::get('/pemilik', [PemilikController::class, 'pemilik'])->name('pemilik'); // halaman data master pemilik
-        Route::get('/data-pasien', [BerandaController::class, 'dataPasien'])->name('data-pasien'); // view data pasien
+        // Route::get('/data-pasien', [BerandaController::class, 'dataPasien'])->name('data-pasien'); // view data pasien
         Route::get('/rekam-medis', [RekamMedisController::class, 'rekam_medis'])->name('rekam-medis'); // view rekam medis
         Route::get('/rekam-medis/tambah-rekam-medis', [RekamMedisController::class, 'tambahRekamMedis'])->name('tambah-rekam-medis'); // halaman tambah rekam medis
         Route::get('/rekam-medis/edit-rekam-medis/{idrekam_medis}', [RekamMedisController::class, 'editRekamMedis'])->name('edit-rekam-medis'); // halaman edit rekam medis
@@ -181,7 +186,7 @@ Route::prefix('perawat')
         Route::put('/rekam-medis/update/{idrekam_medis}', [RekamMedisController::class, 'update'])->name('rekam-medis.update'); // untuk edit data rekam medis
         Route::get('/rekam-medis/hapus/{idrekam_medis}', [RekamMedisController::class, 'destroy'])->name('rekam-medis.hapus'); // untuk hapus data rekam medis
         Route::get('/detail-rekam-medis', [DetailRekamMedisController::class, 'detail_rekam_medis'])->name('detail-rekam-medis'); // view detail rekam medis
-        Route::get('/profil', [BerandaController::class, 'profilPerawat'])->name('profil'); // view profil perawat
+        // Route::get('/profil', [BerandaController::class, 'profilPerawat'])->name('profil'); // view profil perawat
     });
 
 
@@ -192,7 +197,7 @@ Route::prefix('dokter')
     ->group(function () {
         Route::get('/pet', [PetController::class, 'pet'])->name('pet'); // halaman data master pet
         Route::get('/pemilik', [PemilikController::class, 'pemilik'])->name('pemilik'); // halaman data master pemilik
-        Route::get('/data-pasien', [BerandaController::class, 'dataPasien'])->name('data-pasien'); // view data pasien
+        // Route::get('/data-pasien', [BerandaController::class, 'dataPasien'])->name('data-pasien'); // view data pasien
         Route::get('/rekam-medis', [RekamMedisController::class, 'rekam_medis'])->name('rekam-medis'); // view rekam medis
         Route::get('/detail-rekam-medis', [DetailRekamMedisController::class, 'detail_rekam_medis'])->name('detail-rekam-medis'); // view detail rekam medis
         Route::get('/detail-rekam-medis/tambah-detail-rekam-medis', [DetailRekamMedisController::class, 'tambahDetailRekamMedis'])->name('tambah-detail-rekam-medis'); // halaman tambah detail rekam medis
@@ -200,7 +205,7 @@ Route::prefix('dokter')
         Route::post('/detail-rekam-medis/store', [DetailRekamMedisController::class, 'store'])->name('detail-rekam-medis.store'); // untuk tambah data detail rekam medis
         Route::put('/detail-rekam-medis/update/{iddetail_rekam_medis}', [DetailRekamMedisController::class, 'update'])->name('detail-rekam-medis.update'); // untuk edit data detail rekam medis
         Route::get('/detail-rekam-medis/hapus/{iddetail_rekam_medis}', [DetailRekamMedisController::class, 'destroy'])->name('detail-rekam-medis.hapus'); // untuk hapus data detail rekam medis
-        Route::get('/profil', [BerandaController::class, 'profilDokter'])->name('profil'); // view profil dokter
+        // Route::get('/profil', [BerandaController::class, 'profilDokter'])->name('profil'); // view profil dokter
     });
 
 
@@ -211,6 +216,6 @@ Route::prefix('pemilik')
     ->group(function () {
         Route::get('/jadwal-temu-dokter', [TemuDokterController::class, 'temu_dokter'])->name('jadwal-temu-dokter'); // view jadwal temu dokter
         Route::get('/rekam-medis', [RekamMedisController::class, 'rekam_medis'])->name('rekam-medis'); // view rekam medis
-        Route::get('/profil', [BerandaController::class, 'profilPemilik'])->name('profil'); // view profil pemilik
+        // Route::get('/profil', [BerandaController::class, 'profilPemilik'])->name('profil'); // view profil pemilik
         Route::get('/pet', [PetController::class, 'pet'])->name('pet'); // view pet
     });
