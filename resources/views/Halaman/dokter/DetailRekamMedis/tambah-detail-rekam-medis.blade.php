@@ -75,7 +75,7 @@
                                     <div class="container">
                                         <!-- START FORM -->
                                         <div class="my-3 p-3 bg-body rounded shadow-sm">
-                                            <form action="{{ route('perawat.detail-rekam-medis.store') }}" method="POST">
+                                            <form action="{{ route('dokter.detail-rekam-medis.store') }}" method="POST">
 
                                                 @csrf
 
@@ -117,7 +117,7 @@
                                                 <div class="mb-3 row">
                                                     <label class="col-sm-2 col-form-label"></label>
                                                     <div class="col-sm-10">
-                                                        <a href="{{route('detail-rekam-medis')}}" class="btn btn-secondary">Kembali</a>
+                                                        <a href="{{route('dokter.detail-rekam-medis')}}" class="btn btn-secondary">Kembali</a>
                                                         <button type="submit" class="btn btn-primary" name="submit">SIMPAN</button>
                                                     </div>
                                                 </div>

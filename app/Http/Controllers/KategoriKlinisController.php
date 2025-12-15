@@ -33,7 +33,7 @@ class KategoriKlinisController extends Controller
             'nama_kategori_klinis' => $request->nama_kategori_klinis,
         ]);
 
-        return redirect()->route('kategori-klinis')->with('success', 'Kategori Klinis berhasil ditambahkan!');
+        return redirect()->route('admin.kategori-klinis')->with('success', 'Kategori Klinis berhasil ditambahkan!');
     }
 
     // halaman edit kategori klinis
@@ -60,7 +60,7 @@ class KategoriKlinisController extends Controller
         // Simpan perubahan
         $kategori_klinis->save();
 
-        return redirect()->route('kategori-klinis')->with('success', 'Kategori Klinis berhasil diupdate!');
+        return redirect()->route('admin.kategori-klinis')->with('success', 'Kategori Klinis berhasil diupdate!');
     }
 
     // function hapus kategori klinis
@@ -73,6 +73,6 @@ class KategoriKlinisController extends Controller
         $kategori_klinis->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('kategori-klinis')->with('success', 'Kategori Klinis berhasil dihapus!');
+        return redirect()->route('admin.kategori-klinis')->with('success', 'Kategori Klinis berhasil dihapus!');
     }
 }

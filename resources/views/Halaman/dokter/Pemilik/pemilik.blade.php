@@ -78,8 +78,6 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('doker.tambah-pemilik') }}" class="btn btn-primary">Tambah Pemilik</a>
-
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
                                                     <li class="page-item">
@@ -109,7 +107,6 @@
                                                     <th class="col-md-3">No WA</th>
                                                     <th class="col-md-3">Alamat</th>
                                                     <th class="col-md-3">Nama User</th>
-                                                    <th class="col-md-2">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -119,10 +116,6 @@
                                                     <td>{{ $value->no_wa }}</td>
                                                     <td>{{ $value->alamat }}</td>
                                                     <td>{{ $value->user->nama }}</td>
-                                                    <td>
-                                                        <a href="{{ route('doker.edit-pemilik', $value->idpemilik) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('doker.pemilik.hapus', $value->idpemilik) }}" class="btn btn-danger btn-sm">Delete</a>
-                                                    </td>
                                                 </tr>
                                                 @empty
                                                 <tr>

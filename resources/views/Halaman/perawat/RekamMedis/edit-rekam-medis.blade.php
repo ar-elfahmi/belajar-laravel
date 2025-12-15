@@ -117,7 +117,7 @@
                                                     </select>
                                                 </div>
 
-                                                <a href="{{route('rekam-medis')}}" class="btn btn-secondary">Kembali</a>
+                                                <a href="{{route('perawat.rekam-medis')}}" class="btn btn-secondary">Kembali</a>
                                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                             </form>
                                         </div>

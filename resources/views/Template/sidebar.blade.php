@@ -220,10 +220,27 @@
                     <li class="nav-header">MENU DOKTER</li>
 
                     <li class="nav-item">
-                        <a href="{{route('dokter.data-pasien')}}" class="nav-link">
-                            <i class="nav-icon bi bi-people-fill"></i>
-                            <p>Data Pasien</p>
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon bi bi-database-fill"></i>
+                            <p>
+                                Data Pasien
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('dokter.pemilik')}}" class="nav-link">
+                                    <i class="nav-icon bi bi-circle"></i>
+                                    <p>Data Pemilik</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('dokter.pet')}}" class="nav-link">
+                                    <i class="nav-icon bi bi-circle"></i>
+                                    <p>Data Pet</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="nav-item">
@@ -264,10 +281,27 @@
                     <li class="nav-header">MENU PERAWAT</li>
 
                     <li class="nav-item">
-                        <a href="{{route('perawat.data-pasien')}}" class="nav-link">
-                            <i class="nav-icon bi bi-people-fill"></i>
-                            <p>Data Pasien</p>
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon bi bi-database-fill"></i>
+                            <p>
+                                Data Pasien
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('perawat.pemilik')}}" class="nav-link">
+                                    <i class="nav-icon bi bi-circle"></i>
+                                    <p>Data Pemilik</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('perawat.pet')}}" class="nav-link">
+                                    <i class="nav-icon bi bi-circle"></i>
+                                    <p>Data Pet</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="nav-item">

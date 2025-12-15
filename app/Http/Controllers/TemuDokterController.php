@@ -7,6 +7,7 @@ use App\Models\Pet;
 use App\Models\RoleUser;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TemuDokterController extends Controller
 {
@@ -14,7 +15,29 @@ class TemuDokterController extends Controller
     public function temu_dokter()
     {
         $data_temu_dokter = TemuDokter::with('pet', 'roleUser')->paginate(4);
-        return view('Halaman.admin.TemuDokter.temu-dokter', compact('data_temu_dokter'));
+
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return view('Halaman.admin.TemuDokter.temu-dokter', compact('data_temu_dokter'));
+
+            case 'Resepsionis':
+                return view('Halaman.resepsionis.TemuDokter.temu-dokter', compact('data_temu_dokter'));
+
+            case 'Pemilik':
+                // Pemilik hanya bisa melihat temu dokter milik hewan mereka
+                $data_temu_dokter = TemuDokter::with('pet', 'roleUser')
+                    ->whereHas('pet.pemilik.user', function ($query) {
+                        $query->where('iduser', Auth::user()->iduser);
+                    })
+                    ->paginate(4);
+                return view('Halaman.pemilik.TemuDokter.temu-dokter', compact('data_temu_dokter'));
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     //halaman tambah temu dokter
@@ -22,7 +45,20 @@ class TemuDokterController extends Controller
     {
         $data_pet = Pet::all();
         $data_role_user = RoleUser::all();
+
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
         return view('Halaman.admin.TemuDokter.tambah-temu-dokter', compact('data_pet', 'data_role_user'));
+
+            case 'Resepsionis':
+        return view('Halaman.resepsionis.TemuDokter.tambah-temu-dokter', compact('data_pet', 'data_role_user'));
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function tambah temu dokter
@@ -58,7 +94,19 @@ class TemuDokterController extends Controller
             'idrole_user'  => $request->idrole_user,
         ]);
 
-        return redirect()->route('temu-dokter')->with('success', 'Temu Dokter berhasil ditambahkan dengan No Urut: ' . $nextNoUrut);
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+        return redirect()->route('admin.temu-dokter')->with('success', 'Temu Dokter berhasil ditambahkan dengan No Urut: ' . $nextNoUrut);
+
+            case 'Resepsionis':
+        return redirect()->route('resepsionis.temu-dokter')->with('success', 'Temu Dokter berhasil ditambahkan dengan No Urut: ' . $nextNoUrut);
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // halaman edit temu dokter
@@ -67,7 +115,20 @@ class TemuDokterController extends Controller
         $data_temu_dokter = TemuDokter::with('pet', 'roleUser')->find($idreservasi_dokter);
         $data_pet = Pet::all();
         $data_role_user = RoleUser::all();
+
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
         return view('Halaman.admin.TemuDokter.edit-temu-dokter', compact('data_temu_dokter', 'data_pet', 'data_role_user'));
+
+            case 'Resepsionis':
+        return view('Halaman.resepsionis.TemuDokter.edit-temu-dokter', compact('data_temu_dokter', 'data_pet', 'data_role_user'));
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function edit temu dokter
@@ -95,7 +156,19 @@ class TemuDokterController extends Controller
         // Simpan perubahan
         $temu_dokter->save();
 
-        return redirect()->route('temu-dokter')->with('success', 'Temu Dokter berhasil diupdate!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+        return redirect()->route('admin.temu-dokter')->with('success', 'Temu Dokter berhasil diupdate!');
+
+            case 'Resepsionis':
+        return redirect()->route('resepsionis.temu-dokter')->with('success', 'Temu Dokter berhasil diupdate!');
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function hapus temu dokter
@@ -108,6 +181,18 @@ class TemuDokterController extends Controller
         $temu_dokter->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('temu-dokter')->with('success', 'Temu Dokter berhasil dihapus!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+        return redirect()->route('admin.temu-dokter')->with('success', 'Temu Dokter berhasil dihapus!');
+
+            case 'Resepsionis':
+        return redirect()->route('resepsionis.temu-dokter')->with('success', 'Temu Dokter berhasil dihapus!');
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 }

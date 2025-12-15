@@ -78,8 +78,6 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('pemilik.tambah-rekam-medis') }}" class="btn btn-primary">Tambah Rekam Medis</a>
-
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
                                                     <li class="page-item">
@@ -111,7 +109,6 @@
                                                     <th class="col-md-2">Anamnesa</th>
                                                     <th class="col-md-2">Temuan Klinis</th>
                                                     <th class="col-md-2">Diagnosa</th>
-                                                    <th class="col-md-1">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -123,10 +120,6 @@
                                                     <td>{{ Str::limit($value->anamnesa, 50) }}</td>
                                                     <td>{{ Str::limit($value->temuan_klinis, 50) }}</td>
                                                     <td>{{ Str::limit($value->diagnosa, 50) }}</td>
-                                                    <td>
-                                                        <a href="{{ route('pemilik.edit-rekam-medis', $value->idrekam_medis) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('pemilik.rekam-medis.hapus', $value->idrekam_medis) }}" class="btn btn-danger btn-sm">Delete</a>
-                                                    </td>
                                                 </tr>
                                                 @empty
                                                 <tr>

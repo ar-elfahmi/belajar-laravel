@@ -91,7 +91,7 @@
                                                     <label>Password (Kosongkan jika tidak ingin mengganti)</label>
                                                     <input type="password" name="password" class="form-control">
                                                 </div>
-                                                <a href="{{route('user')}}" class="btn btn-secondary">Kembali</a>
+                                                <a href="{{route('admin.user')}}" class="btn btn-secondary">Kembali</a>
                                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                             </form>
                                         </div>

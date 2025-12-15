@@ -41,7 +41,7 @@ class RoleUserController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('role-user')->with('success', 'Role User berhasil ditambahkan!');
+        return redirect()->route('admin.role-user')->with('success', 'Role User berhasil ditambahkan!');
     }
 
     // halaman edit role user
@@ -74,7 +74,7 @@ class RoleUserController extends Controller
         // Simpan perubahan
         $role_user->save();
 
-        return redirect()->route('role-user')->with('success', 'Role User berhasil diupdate!');
+        return redirect()->route('admin.role-user')->with('success', 'Role User berhasil diupdate!');
     }
 
     // function hapus role user
@@ -87,6 +87,6 @@ class RoleUserController extends Controller
         $role_user->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('role-user')->with('success', 'Role User berhasil dihapus!');
+        return redirect()->route('admin.role-user')->with('success', 'Role User berhasil dihapus!');
     }
 }

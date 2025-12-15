@@ -33,7 +33,7 @@ class JenisHewanController extends Controller
             'nama_jenis_hewan' => $request->nama_jenis_hewan,
         ]);
 
-        return redirect()->route('jenis-hewan')->with('success', 'Jenis Hewan berhasil ditambahkan!');
+        return redirect()->route('admin.jenis-hewan')->with('success', 'Jenis Hewan berhasil ditambahkan!');
     }
 
     // halaman edit jenis hewan
@@ -60,7 +60,7 @@ class JenisHewanController extends Controller
         // Simpan perubahan
         $jenis_hewan->save();
 
-        return redirect()->route('jenis-hewan')->with('success', 'Jenis Hewan berhasil diupdate!');
+        return redirect()->route('admin.jenis-hewan')->with('success', 'Jenis Hewan berhasil diupdate!');
     }
 
     // function hapus jenis hewan
@@ -73,6 +73,6 @@ class JenisHewanController extends Controller
         $jenis_hewan->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('jenis-hewan')->with('success', 'Jenis Hewan berhasil dihapus!');
+        return redirect()->route('admin.jenis-hewan')->with('success', 'Jenis Hewan berhasil dihapus!');
     }
 }

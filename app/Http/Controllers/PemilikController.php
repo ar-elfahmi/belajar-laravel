@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pemilik;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PemilikController extends Controller
 {
@@ -12,14 +13,43 @@ class PemilikController extends Controller
     public function pemilik()
     {
         $data_pemilik = Pemilik::with('user')->paginate(4);
-        return view('Halaman.admin.Pemilik.pemilik', compact('data_pemilik'));
+
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return view('Halaman.admin.Pemilik.pemilik', compact('data_pemilik'));
+
+            case 'Resepsionis':
+                return view('Halaman.resepsionis.Pemilik.pemilik', compact('data_pemilik'));
+
+            case 'Dokter':
+            case 'Perawat':
+                return view('Halaman.dokter.Pemilik.pemilik', compact('data_pemilik'));
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     //halaman tambah pemilik
     public function tambahPemilik()
     {
         $data_user = User::all();
-        return view('Halaman.admin.Pemilik.tambah-pemilik', compact('data_user'));
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return view('Halaman.admin.Pemilik.tambah-pemilik', compact('data_user'));
+
+            case 'Resepsionis':
+                return view('Halaman.resepsionis.Pemilik.tambah-pemilik', compact('data_user'));
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function tambah pemilik
@@ -39,7 +69,19 @@ class PemilikController extends Controller
             'iduser'  => $request->iduser,
         ]);
 
-        return redirect()->route('pemilik')->with('success', 'Pemilik berhasil ditambahkan!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return redirect()->route('admin.pemilik')->with('success', 'Pemilik berhasil ditambahkan!');
+
+            case 'Resepsionis':
+                return redirect()->route('resepsionis.pemilik')->with('success', 'Pemilik berhasil ditambahkan!');
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // halaman edit pemilik
@@ -47,7 +89,19 @@ class PemilikController extends Controller
     {
         $data_pemilik = Pemilik::with('user')->find($idpemilik);
         $data_user = User::all();
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
         return view('Halaman.admin.Pemilik.edit-pemilik', compact('data_pemilik', 'data_user'));
+
+            case 'Resepsionis':
+        return view('Halaman.resepsionis.Pemilik.edit-pemilik', compact('data_pemilik', 'data_user'));
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function edit pemilik
@@ -71,7 +125,19 @@ class PemilikController extends Controller
         // Simpan perubahan
         $pemilik->save();
 
-        return redirect()->route('pemilik')->with('success', 'Pemilik berhasil diupdate!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return redirect()->route('admin.pemilik')->with('success', 'Pemilik berhasil diupdate!');
+
+            case 'Resepsionis':
+                return redirect()->route('resepsionis.pemilik')->with('success', 'Pemilik berhasil diupdate!');
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function hapus pemilik
@@ -83,7 +149,18 @@ class PemilikController extends Controller
         // Hapus pemilik
         $pemilik->delete();
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('pemilik')->with('success', 'Pemilik berhasil dihapus!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return redirect()->route('admin.pemilik')->with('success', 'Pemilik berhasil dihapus!');
+
+            case 'Resepsionis':
+                return redirect()->route('resepsionis.pemilik')->with('success', 'Pemilik berhasil dihapus!');
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 }

@@ -82,7 +82,7 @@
                                                     <label>Nama Jenis Hewan</label>
                                                     <input type="text" name="nama_jenis_hewan" class="form-control" value="{{ old('nama_jenis_hewan', $data_jenis_hewan->nama_jenis_hewan) }}">
                                                 </div>
-                                                <a href="{{route('jenis-hewan')}}" class="btn btn-secondary">Kembali</a>
+                                                <a href="{{route('admin.jenis-hewan')}}" class="btn btn-secondary">Kembali</a>
                                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                             </form>
                                         </div>

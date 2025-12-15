@@ -82,7 +82,8 @@
                                                     <label>Nama Kategori</label>
                                                     <input type="text" name="nama_kategori" class="form-control" value="{{ old('nama_kategori', $data_kategori->nama_kategori) }}">
                                                 </div>
-                                                <a href="{{route('kategori')}}" class="btn btn-secondary">Kembali</a>
+                                                <a href="{{route('admin.
+                                                kategori')}}" class="btn btn-secondary">Kembali</a>
                                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                             </form>
                                         </div>

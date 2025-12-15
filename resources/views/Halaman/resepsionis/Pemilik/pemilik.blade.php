@@ -78,7 +78,7 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('resepsionis.resepsionis.tambah-pemilik') }}" class="btn btn-primary">Tambah Pemilik</a>
+                                            <a href="{{ route('resepsionis.tambah-pemilik') }}" class="btn btn-primary">Tambah Pemilik</a>
 
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
@@ -120,8 +120,8 @@
                                                     <td>{{ $value->alamat }}</td>
                                                     <td>{{ $value->user->nama }}</td>
                                                     <td>
-                                                        <a href="{{ route('resepsionis.resepsionis.edit-pemilik', $value->idpemilik) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('resepsionis.resepsionis.pemilik.hapus', $value->idpemilik) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                        <a href="{{ route('resepsionis.edit-pemilik', $value->idpemilik) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('resepsionis.pemilik.hapus', $value->idpemilik) }}" class="btn btn-danger btn-sm">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @empty

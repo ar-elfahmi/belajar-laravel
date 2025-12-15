@@ -113,7 +113,7 @@
                                                     </select>
                                                 </div>
 
-                                                <a href="{{route('kode-tindakan-terapi')}}" class="btn btn-secondary">Kembali</a>
+                                                <a href="{{route('admin.kode-tindakan-terapi')}}" class="btn btn-secondary">Kembali</a>
                                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                             </form>
                                         </div>

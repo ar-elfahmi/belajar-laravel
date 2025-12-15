@@ -114,7 +114,7 @@
                                                     </div>
                                                 </div>
 
-                                                <a href="{{route('detail-rekam-medis')}}" class="btn btn-secondary">Kembali</a>
+                                                <a href="{{route('admin.detail-rekam-medis')}}" class="btn btn-secondary">Kembali</a>
                                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                             </form>
                                         </div>

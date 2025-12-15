@@ -122,7 +122,7 @@
                                                     </select>
                                                 </div>
 
-                                                <a href="{{route('temu-dokter')}}" class="btn btn-secondary">Kembali</a>
+                                                <a href="{{route('resepsionis.temu-dokter')}}" class="btn btn-secondary">Kembali</a>
                                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                             </form>
                                         </div>

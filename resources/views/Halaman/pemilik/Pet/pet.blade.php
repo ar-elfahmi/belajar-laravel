@@ -78,8 +78,6 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('pemilik.tambah-pet') }}" class="btn btn-primary">Tambah Pet</a>
-
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
                                                     <li class="page-item">
@@ -111,7 +109,6 @@
                                                     <th class="col-md-1">Jenis Kelamin</th>
                                                     <th class="col-md-2">Pemilik</th>
                                                     <th class="col-md-2">Ras Hewan</th>
-                                                    <th class="col-md-2">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -123,10 +120,6 @@
                                                     <td>{{ $value->jenis_kelamin == 'J' ? 'Jantan' : 'Betina' }}</td>
                                                     <td>{{ $value->pemilik && $value->pemilik->user ? $value->pemilik->user->nama : 'Tidak ada pemilik' }}</td>
                                                     <td>{{ $value->rasHewan ? $value->rasHewan->nama_ras : 'Tidak ada ras' }}</td>
-                                                    <td>
-                                                        <a href="{{ route('pemilik.edit-pet', $value->idpet) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('pemilik.pet.hapus', $value->idpet) }}" class="btn btn-danger btn-sm">Delete</a>
-                                                    </td>
                                                 </tr>
                                                 @empty
                                                 <tr>

@@ -45,7 +45,7 @@ class KodeTindakanTerapiController extends Controller
             'idkategori_klinis' => $request->idkategori_klinis,
         ]);
 
-        return redirect()->route('kode-tindakan-terapi')->with('success', 'Kode Tindakan Terapi berhasil ditambahkan!');
+        return redirect()->route('admin.kode-tindakan-terapi')->with('success', 'Kode Tindakan Terapi berhasil ditambahkan!');
     }
 
     // halaman edit kode tindakan terapi
@@ -80,7 +80,7 @@ class KodeTindakanTerapiController extends Controller
         // Simpan perubahan
         $kode_tindakan_terapi->save();
 
-        return redirect()->route('kode-tindakan-terapi')->with('success', 'Kode Tindakan Terapi berhasil diupdate!');
+        return redirect()->route('admin.kode-tindakan-terapi')->with('success', 'Kode Tindakan Terapi berhasil diupdate!');
     }
 
     // function hapus kode tindakan terapi
@@ -93,6 +93,6 @@ class KodeTindakanTerapiController extends Controller
         $kode_tindakan_terapi->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('kode-tindakan-terapi')->with('success', 'Kode Tindakan Terapi berhasil dihapus!');
+        return redirect()->route('admin.kode-tindakan-terapi')->with('success', 'Kode Tindakan Terapi berhasil dihapus!');
     }
 }

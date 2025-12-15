@@ -78,6 +78,8 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
+                                            <a href="{{ route('dokter.tambah-detail-rekam-medis') }}" class="btn btn-primary">Tambah Detail Rekam Medis</a>
+
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
                                                     <li class="page-item">
@@ -107,6 +109,7 @@
                                                     <th class="col-md-3">Rekam Medis</th>
                                                     <th class="col-md-3">Tindakan/Terapi</th>
                                                     <th class="col-md-3">Detail</th>
+                                                    <th class="col-md-2">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -116,6 +119,10 @@
                                                     <td>{{ $value->rekamMedis->temuDokter->pet->nama ?? 'N/A' }} ({{ $value->rekamMedis->temuDokter->waktu_daftar ?? 'N/A' }})</td>
                                                     <td>{{ $value->kodeTindakanTerapi->kode ?? 'N/A' }} - {{ $value->kodeTindakanTerapi->deskripsi_tindakan_terapi ?? 'N/A' }}</td>
                                                     <td>{{ $value->detail ?? '-' }}</td>
+                                                    <td>
+                                                        <a href="{{ route('dokter.edit-detail-rekam-medis', $value->iddetail_rekam_medis) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <a href="{{ route('dokter.detail-rekam-medis.hapus', $value->iddetail_rekam_medis) }}" class="btn btn-danger btn-sm">Delete</a>
+                                                    </td>
                                                 </tr>
                                                 @empty
                                                 <tr>

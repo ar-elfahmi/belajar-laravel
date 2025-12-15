@@ -38,7 +38,7 @@ class RasHewanController extends Controller
             'idjenis_hewan' => $request->idjenis_hewan,
         ]);
 
-        return redirect()->route('ras-hewan')->with('success', 'Ras Hewan berhasil ditambahkan!');
+        return redirect()->route('admin.ras-hewan')->with('success', 'Ras Hewan berhasil ditambahkan!');
     }
 
     // halaman edit ras hewan
@@ -68,7 +68,7 @@ class RasHewanController extends Controller
         // Simpan perubahan
         $ras_hewan->save();
 
-        return redirect()->route('ras-hewan')->with('success', 'Ras Hewan berhasil diupdate!');
+        return redirect()->route('admin.ras-hewan')->with('success', 'Ras Hewan berhasil diupdate!');
     }
 
     // function hapus ras hewan
@@ -81,6 +81,6 @@ class RasHewanController extends Controller
         $ras_hewan->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('ras-hewan')->with('success', 'Ras Hewan berhasil dihapus!');
+        return redirect()->route('admin.ras-hewan')->with('success', 'Ras Hewan berhasil dihapus!');
     }
 }

@@ -89,7 +89,7 @@
                                                 <div class="mb-3 row">
                                                     <label class="col-sm-2 col-form-label"></label>
                                                     <div class="col-sm-10">
-                                                        <a href="{{route('role')}}" class="btn btn-secondary">Kembali</a>
+                                                        <a href="{{route('admin.role')}}" class="btn btn-secondary">Kembali</a>
                                                         <button type="submit" class="btn btn-primary" name="submit">SIMPAN</button>
                                                     </div>
                                                 </div>

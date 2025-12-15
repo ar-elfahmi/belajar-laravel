@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use App\Models\RekamMedis;
 use App\Models\TemuDokter;
@@ -13,28 +14,31 @@ class RekamMedisController extends Controller
     public function rekam_medis()
     {
         $data_rekam_medis = RekamMedis::with('temuDokter.pet', 'dokter.user')->paginate(4);
-        $Role = Auth::user()->role_user->first()->role->nama_role;
+
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
         switch ($Role) {
             case 'Administrator':
                 return view('Halaman.admin.RekamMedis.rekam-medis', compact('data_rekam_medis'));
-                break;
-
-            case 'Resepsionis':
-                return view('Halaman.resepsionis.RekamMedis.rekam-medis', compact('data_rekam_medis'));
-                break;
-
-            case 'Dokter':
-                return view('Halaman.dokter.RekamMedis.rekam-medis', compact('data_rekam_medis'));
-                break;
 
             case 'Perawat':
                 return view('Halaman.perawat.RekamMedis.rekam-medis', compact('data_rekam_medis'));
-                break;
-                
+
+            case 'Dokter':
+                return view('Halaman.dokter.RekamMedis.rekam-medis', compact('data_rekam_medis'));
+
+            case 'Pemilik':
+                // Pemilik hanya bisa melihat rekam medis milik hewan mereka
+                $data_rekam_medis = RekamMedis::with('temuDokter.pet', 'dokter.user')
+                    ->whereHas('temuDokter.pet.pemilik.user', function ($query) {
+                        $query->where('iduser', Auth::user()->iduser);
+                    })
+                    ->paginate(4);
+                return view('Halaman.pemilik.RekamMedis.rekam-medis', compact('data_rekam_medis'));
+
             default:
-                // Jika role tidak dikenali, kembalikan ke halaman login atau home default
-                return redirect('/')->with('error', 'Anda tidak memiliki akses.');
-                break;
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
         }
     }
 
@@ -45,7 +49,20 @@ class RekamMedisController extends Controller
         $data_role_user = RoleUser::whereHas('role', function ($query) {
             $query->where('nama_role', 'Dokter');
         })->with('user')->get();
-        return view('Halaman.admin.RekamMedis.tambah-rekam-medis', compact('data_temu_dokter', 'data_role_user'));
+
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return view('Halaman.admin.RekamMedis.tambah-rekam-medis', compact('data_temu_dokter', 'data_role_user'));
+
+            case 'Perawat':
+                return view('Halaman.perawat.RekamMedis.tambah-rekam-medis', compact('data_temu_dokter', 'data_role_user'));
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function tambah rekam medis
@@ -70,7 +87,19 @@ class RekamMedisController extends Controller
             'dokter_pemeriksa' => $request->dokter_pemeriksa,
         ]);
 
-        return redirect()->route('rekam-medis')->with('success', 'Rekam Medis berhasil ditambahkan!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+        return redirect()->route('admin.rekam-medis')->with('success', 'Rekam Medis berhasil ditambahkan!');
+
+            case 'Perawat':
+        return redirect()->route('perawat.rekam-medis')->with('success', 'Rekam Medis berhasil ditambahkan!');
+                
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // halaman edit rekam medis
@@ -81,7 +110,20 @@ class RekamMedisController extends Controller
         $data_role_user = RoleUser::whereHas('role', function ($query) {
             $query->where('nama_role', 'Dokter');
         })->with('user')->get();
+
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
         return view('Halaman.admin.RekamMedis.edit-rekam-medis', compact('data_rekam_medis', 'data_temu_dokter', 'data_role_user'));
+
+            case 'Perawat':
+        return view('Halaman.perawat.RekamMedis.edit-rekam-medis', compact('data_rekam_medis', 'data_temu_dokter', 'data_role_user'));
+                
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function edit rekam medis
@@ -109,7 +151,19 @@ class RekamMedisController extends Controller
         // Simpan perubahan
         $rekam_medis->save();
 
-        return redirect()->route('rekam-medis')->with('success', 'Rekam Medis berhasil diupdate!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+        return redirect()->route('admin.rekam-medis')->with('success', 'Rekam Medis berhasil diupdate!');
+
+            case 'Perawat':
+        return redirect()->route('perawat.rekam-medis')->with('success', 'Rekam Medis berhasil diupdate!');
+                
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function hapus rekam medis
@@ -122,6 +176,18 @@ class RekamMedisController extends Controller
         $rekam_medis->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('rekam-medis')->with('success', 'Rekam Medis berhasil dihapus!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+        return redirect()->route('admin.rekam-medis')->with('success', 'Rekam Medis berhasil dihapus!');
+
+            case 'Perawat':
+        return redirect()->route('perawat.rekam-medis')->with('success', 'Rekam Medis berhasil dihapus!');
+                
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 }

@@ -33,7 +33,7 @@ class KategoriController extends Controller
             'nama_kategori' => $request->nama_kategori,
         ]);
 
-        return redirect()->route('kategori')->with('success', 'Kategori berhasil ditambahkan!');
+        return redirect()->route('admin.kategori')->with('success', 'Kategori berhasil ditambahkan!');
     }
 
     // halaman edit kategori
@@ -60,7 +60,7 @@ class KategoriController extends Controller
         // Simpan perubahan
         $kategori->save();
 
-        return redirect()->route('kategori')->with('success', 'Kategori berhasil diupdate!');
+        return redirect()->route('admin.kategori')->with('success', 'Kategori berhasil diupdate!');
     }
 
     // function hapus kategori
@@ -73,6 +73,6 @@ class KategoriController extends Controller
         $kategori->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('kategori')->with('success', 'Kategori berhasil dihapus!');
+        return redirect()->route('admin.kategori')->with('success', 'Kategori berhasil dihapus!');
     }
 }

@@ -171,6 +171,8 @@ Route::prefix('perawat')
     ->middleware('cekrole:Perawat')
     ->name('perawat.')
     ->group(function () {
+        Route::get('/pet', [PetController::class, 'pet'])->name('pet'); // halaman data master pet
+        Route::get('/pemilik', [PemilikController::class, 'pemilik'])->name('pemilik'); // halaman data master pemilik
         Route::get('/data-pasien', [BerandaController::class, 'dataPasien'])->name('data-pasien'); // view data pasien
         Route::get('/rekam-medis', [RekamMedisController::class, 'rekam_medis'])->name('rekam-medis'); // view rekam medis
         Route::get('/rekam-medis/tambah-rekam-medis', [RekamMedisController::class, 'tambahRekamMedis'])->name('tambah-rekam-medis'); // halaman tambah rekam medis
@@ -188,6 +190,8 @@ Route::prefix('dokter')
     ->middleware('cekrole:Dokter')
     ->name('dokter.')
     ->group(function () {
+        Route::get('/pet', [PetController::class, 'pet'])->name('pet'); // halaman data master pet
+        Route::get('/pemilik', [PemilikController::class, 'pemilik'])->name('pemilik'); // halaman data master pemilik
         Route::get('/data-pasien', [BerandaController::class, 'dataPasien'])->name('data-pasien'); // view data pasien
         Route::get('/rekam-medis', [RekamMedisController::class, 'rekam_medis'])->name('rekam-medis'); // view rekam medis
         Route::get('/detail-rekam-medis', [DetailRekamMedisController::class, 'detail_rekam_medis'])->name('detail-rekam-medis'); // view detail rekam medis
@@ -205,7 +209,7 @@ Route::prefix('pemilik')
     ->middleware('cekrole:Pemilik')
     ->name('pemilik.')
     ->group(function () {
-        Route::get('/jadwal-temu-dokter', [BerandaController::class, 'jadwalTemuDokter'])->name('jadwal-temu-dokter'); // view jadwal temu dokter
+        Route::get('/jadwal-temu-dokter', [TemuDokterController::class, 'temu_dokter'])->name('jadwal-temu-dokter'); // view jadwal temu dokter
         Route::get('/rekam-medis', [RekamMedisController::class, 'rekam_medis'])->name('rekam-medis'); // view rekam medis
         Route::get('/profil', [BerandaController::class, 'profilPemilik'])->name('profil'); // view profil pemilik
         Route::get('/pet', [PetController::class, 'pet'])->name('pet'); // view pet

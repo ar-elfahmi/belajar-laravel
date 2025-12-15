@@ -78,8 +78,6 @@
                                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
 
-                                            <a href="{{ route('pemilik.tambah-temu-dokter') }}" class="btn btn-primary">Tambah Temu Dokter</a>
-
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination m-0">
                                                     <li class="page-item">
@@ -111,7 +109,6 @@
                                                     <th class="col-md-1">Status</th>
                                                     <th class="col-md-2">Pet</th>
                                                     <th class="col-md-2">User</th>
-                                                    <th class="col-md-3">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -131,10 +128,6 @@
                                                     </td>
                                                     <td>{{ $value->pet->nama }}</td>
                                                     <td>{{ $value->roleUser->user->nama }}</td>
-                                                    <td>
-                                                        <a href="{{ route('pemilik.edit-temu-dokter', $value->idreservasi_dokter) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('pemilik.temu-dokter.hapus', $value->idreservasi_dokter) }}" class="btn btn-danger btn-sm">Delete</a>
-                                                    </td>
                                                 </tr>
                                                 @empty
                                                 <tr>

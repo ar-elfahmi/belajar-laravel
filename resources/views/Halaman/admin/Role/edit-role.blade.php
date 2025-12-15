@@ -82,7 +82,7 @@
                                                     <label>Nama Role</label>
                                                     <input type="text" name="nama_role" class="form-control" value="{{ old('nama_role', $data_role->nama_role) }}">
                                                 </div>
-                                                <a href="{{route('role')}}" class="btn btn-secondary">Kembali</a>
+                                                <a href="{{route('admin.role')}}" class="btn btn-secondary">Kembali</a>
                                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                             </form>
                                         </div>

@@ -100,7 +100,7 @@
                                                     </select>
                                                 </div>
 
-                                                <a href="{{route('pemilik')}}" class="btn btn-secondary">Kembali</a>
+                                                <a href="{{route('admin.pemilik')}}" class="btn btn-secondary">Kembali</a>
                                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                             </form>
                                         </div>

@@ -75,7 +75,7 @@
                                     <div class="container">
                                         <!-- START FORM -->
                                         <div class="my-3 p-3 bg-body rounded shadow-sm">
-                                            <form action="{{ route('perawat.detail-rekam-medis.update', $data_detail_rekam_medis->iddetail_rekam_medis) }}" method="POST">
+                                            <form action="{{ route('dokter.detail-rekam-medis.update', $data_detail_rekam_medis->iddetail_rekam_medis) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
 
@@ -114,7 +114,7 @@
                                                     </div>
                                                 </div>
 
-                                                <a href="{{route('detail-rekam-medis')}}" class="btn btn-secondary">Kembali</a>
+                                                <a href="{{route('dokter.detail-rekam-medis')}}" class="btn btn-secondary">Kembali</a>
                                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                             </form>
                                         </div>

@@ -6,6 +6,7 @@ use App\Models\Pet;
 use App\Models\Pemilik;
 use App\Models\RasHewan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PetController extends Controller
 {
@@ -13,7 +14,34 @@ class PetController extends Controller
     public function pet()
     {
         $data_pet = Pet::with('pemilik.user', 'rasHewan')->paginate(4);
-        return view('Halaman.admin.Pet.pet', compact('data_pet'));
+
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return view('Halaman.admin.Pet.pet', compact('data_pet'));
+
+            case 'Resepsionis':
+                return view('Halaman.resepsionis.Pet.pet', compact('data_pet'));
+
+            case 'Perawat':
+                return view('Halaman.perawat.Pet.pet', compact('data_pet'));
+
+            case 'Dokter':
+                return view('Halaman.perawat.Pet.pet', compact('data_pet'));
+
+            case 'Pemilik':
+                $data_pet = Pet::with('pemilik.user', 'rasHewan')
+                    ->whereHas('pemilik.user', function ($query) {
+                        $query->where('iduser', Auth::user()->iduser);
+                    })
+                    ->paginate(4);
+                return view('Halaman.pemilik.Pet.pet', compact('data_pet'));
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     //halaman tambah pet
@@ -21,7 +49,19 @@ class PetController extends Controller
     {
         $data_pemilik = Pemilik::all();
         $data_ras_hewan = RasHewan::all();
-        return view('Halaman.admin.Pet.tambah-pet', compact('data_pemilik', 'data_ras_hewan'));
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return view('Halaman.admin.Pet.tambah-pet', compact('data_pemilik', 'data_ras_hewan'));
+
+            case 'Resepsionis':
+                return view('Halaman.resepsionis.Pet.tambah-pet', compact('data_pemilik', 'data_ras_hewan'));
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function tambah pet
@@ -47,7 +87,19 @@ class PetController extends Controller
             'idras_hewan'    => $request->idras_hewan,
         ]);
 
-        return redirect()->route('pet')->with('success', 'Pet berhasil ditambahkan!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return redirect()->route('admin.pet')->with('success', 'Pet berhasil ditambahkan!');
+
+            case 'Resepsionis':
+                return redirect()->route('resepsionis.pet')->with('success', 'Pet berhasil ditambahkan!');
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // halaman edit pet
@@ -56,7 +108,19 @@ class PetController extends Controller
         $data_pet = Pet::with('pemilik', 'rasHewan')->find($idpet);
         $data_pemilik = Pemilik::all();
         $data_ras_hewan = RasHewan::all();
-        return view('Halaman.admin.Pet.edit-pet', compact('data_pet', 'data_pemilik', 'data_ras_hewan'));
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return view('Halaman.admin.Pet.edit-pet', compact('data_pet', 'data_pemilik', 'data_ras_hewan'));
+
+            case 'Resepsionis':
+                return view('Halaman.resepsionis.Pet.edit-pet', compact('data_pet', 'data_pemilik', 'data_ras_hewan'));
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function edit pet
@@ -86,7 +150,19 @@ class PetController extends Controller
         // Simpan perubahan
         $pet->save();
 
-        return redirect()->route('pet')->with('success', 'Pet berhasil diupdate!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return redirect()->route('admin.pet')->with('success', 'Pet berhasil diupdate!');
+
+            case 'Resepsionis':
+                return redirect()->route('resepsionis.pet')->with('success', 'Pet berhasil diupdate!');
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 
     // function hapus pet
@@ -99,6 +175,18 @@ class PetController extends Controller
         $pet->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('pet')->with('success', 'Pet berhasil dihapus!');
+        // Ambil role aktif user
+        $Role = Auth::user()->role_user->where('status', 1)->first()->role->nama_role;
+
+        switch ($Role) {
+            case 'Administrator':
+                return redirect()->route('admin.pet')->with('success', 'Pet berhasil dihapus!');
+
+            case 'Resepsionis':
+                return redirect()->route('admin.pet')->with('success', 'Pet berhasil dihapus!');
+
+            default:
+                abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
     }
 }

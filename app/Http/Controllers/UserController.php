@@ -37,7 +37,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('user')->with('success', 'User berhasil ditambahkan!');
+        return redirect()->route('admin.user')->with('success', 'User berhasil ditambahkan!');
     }
 
     // halaman edit user
@@ -72,7 +72,7 @@ class UserController extends Controller
         // Simpan perubahan
         $user->save();
 
-        return redirect()->route('user')->with('success', 'User berhasil diupdate!');
+        return redirect()->route('admin.user')->with('success', 'User berhasil diupdate!');
     }
 
     // function hapus user
@@ -85,6 +85,6 @@ class UserController extends Controller
         $user->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('user')->with('success', 'User berhasil dihapus!');
+        return redirect()->route('admin.user')->with('success', 'User berhasil dihapus!');
     }
 }
