@@ -267,13 +267,6 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{{route('dokter.profil')}}" class="nav-link">
-                            <i class="nav-icon bi bi-person-badge-fill"></i>
-                            <p>Profil Dokter</p>
-                        </a>
-                    </li>
-
                     @endif
 
                     @if(auth()->user()->role_user()->where('status', '1')->first()->role->nama_role=="Perawat")
@@ -328,13 +321,6 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{{route('perawat.profil')}}" class="nav-link">
-                            <i class="nav-icon bi bi-person-badge-fill"></i>
-                            <p>Profil Perawat</p>
-                        </a>
-                    </li>
-
                     @endif
 
                     @if(auth()->user()->role_user()->where('status', '1')->first()->role->nama_role=="Pemilik")
@@ -362,13 +348,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{{route('pemilik.profil')}}" class="nav-link">
-                            <i class="nav-icon bi bi-person-badge-fill"></i>
-                            <p>Profil Pemilik</p>
-                        </a>
-                    </li>
-
                     @endif
 
                     <li class="nav-header">OTHERS</li>
@@ -376,6 +355,12 @@
                         <a href="{{route('logout')}}" class="nav-link">
                             <i class="nav-icon bi bi-box-arrow-in-right"></i>
                             <p>Logout</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('profile')}}" class="nav-link">
+                            <i class="nav-icon bi bi-person-badge-fill"></i>
+                            <p>Profil Pemilik</p>
                         </a>
                     </li>
                 </ul>

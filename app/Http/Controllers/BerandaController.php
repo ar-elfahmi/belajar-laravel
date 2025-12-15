@@ -45,6 +45,7 @@ class BerandaController extends Controller
     public function profile()
     {
         $Role = Auth::user()->role_user->first()->role->nama_role;
+        // belum ditambahkan isi profilenya
         switch ($Role) {
             case 'Administrator':
                 return view('HalamanDepan.profile-admin');
@@ -71,6 +72,7 @@ class BerandaController extends Controller
                 return redirect('/')->with('error', 'Anda tidak memiliki akses.');
                 break;
         }
+    }
 
     /**
      * Show the form for creating a new resource.
